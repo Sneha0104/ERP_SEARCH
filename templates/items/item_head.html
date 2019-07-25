@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+        <div class="home-search p-5">
+            <div class="overlay p-5">
+                <h1 class="display-4 mb-4">
+                    ERP SEARCH ENGINE
+                </h1>
+
+                <div class="search">
+                    <form action="{% url 'itemDetail' %}">
+                        <!-- Form Row 1 -->
+                        <div class="form-row">
+
+
+                            <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for book in books %}
+                                    <option value="{{book.item_code}}">{{book.item_code}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="ITEM_CODE" id="displayValue"
+                                       placeholder="ITEM CODE" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:320px;" class="form-control">
+                                <input name="idValue" id="idValue" type="hidden">
+                            </div>
+
+
+                           <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue3').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue3').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for post in posts %}
+                                    <option value="{{post.uom}}">{{post.uom}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="UOM" id="displayValue3"
+                                       placeholder="UOM" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:320px;" class="form-control">
+                                <input name="idValue" id="idValue3" type="hidden">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:335px; " class="form-control"
+                                        onchange="document.getElementById('displayValue2').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue2').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for book in books %}
+                                    <option value="{{book.item_description}}">{{book.item_description}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="DESCRIPTION" id="displayValue2"
+                                       placeholder="DESCRIPTION" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:325px;" class="form-control">
+                                <input name="idValue" id="idValue2" type="hidden">
+                            </div>
+
+                        </div>
+                        <!-- Form Row 2 -->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3" style="position:absolute;top:200px;left:40px; width:500px;">
+                                <label class="sr-only">BUTTON</label>
+                                <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

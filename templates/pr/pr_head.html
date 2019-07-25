@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+        <div class="home-search p-5">
+            <div class="overlay p-5">
+                <h1 class="display-4 mb-4">
+                    ERP SEARCH ENGINE
+                </h1>
+
+
+                <div class="search">
+                    <form action="{% url 'prDetail' %}">
+                        <!-- Form Row 1 -->
+                        <div class="form-row">
+
+                            <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for list in lists %}
+                                    <option value="{{list.pr_no}}">{{list.pr_no}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="PR_NUMBER" id="displayValue"
+                                       placeholder="PR NUMBER" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:320px;" class="form-control">
+                                <input name="idValue" id="idValue" type="hidden">
+                            </div>
+
+
+                            <div class="col-md-4 mb-3">
+                                <select style="left:10px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue4').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue4').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for list in lists %}
+                                    <option value="{{list.pr_date}}">{{list.pr_date|date:" Y-m-d "}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="PR_DATE" id="displayValue4"
+                                       placeholder="PR DATE(YYYY-MM-DD)" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:320px;" class="form-control">
+                                <input name="idValue" id="idValue4" type="hidden">
+                            </div>
+
+
+                            <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:310px; " class="form-control"
+                                        onchange="document.getElementById('displayValue1').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue1').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for mat in mats %}
+                                    <option value="{{mat.supplier_code}}">{{mat.supplier_code}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="SUPPLIER_CODE" id="displayValue1"
+                                       placeholder="SUPPLIER CODE" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:300px;" class="form-control">
+                                <input name="idValue" id="idValue1" type="hidden">
+                            </div>
+
+
+                            <div class="col-md-4 mb-3">
+                                <select style="left:10px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue5').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue5').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for list in lists %}
+                                    <option value="{{list.approved_date}}">{{list.approved_date|date:" Y-m-d "}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="APPROVED_DATE" id="displayValue5"
+                                       placeholder="APPROVED DATE(YYYY-MM-DD)" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:7px; width:315px;" class="form-control">
+                                <input name="idValue" id="idValue5" type="hidden">
+                            </div>
+
+
+                            <div class="col-md-4 mb-3">
+                                <select style="position:absolute;top:0px;left:5px; width:330px; " class="form-control"
+                                        onchange="document.getElementById('displayValue2').value=this.options[this.selectedIndex].text;
+                                         document.getElementById('idValue2').value=this.options[this.selectedIndex].value;">
+                                    <option></option>
+                                    {% for book in books %}
+                                    <option value="{{book.item_description}}">{{book.item_description}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="DESCRIPTION" id="displayValue2"
+                                       placeholder="DESCRIPTION" onfocus="this.select()"
+                                       style="position:absolute;top:0px;left:5px; width:320px;" class="form-control">
+                                <input name="idValue" id="idValue2" type="hidden">
+                            </div>
+
+
+                        </div>
+                        <!-- Form Row 2 -->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label class="sr-only">BUTTON</label>
+                                <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

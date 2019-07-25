@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4">INVOICE</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'invoice' %}">INVOICE SEARCH</a>
+                </li>
+                <li class="breadcrumb-item active">INVOICE DETAILS</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Listing -->
+<section id="listing" class="py-4">
+    <div class="container">
+        <a href="{% url 'index' %}" class="btn btn-light mb-4">Back To Main Search Page</a>
+        <div class="row">
+            <div class="col-md-9">
+                <!-- Fields -->
+                <div class="row mb-5 fields">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+
+                             {% for list in lists %}
+
+                            {% for post in posts%}
+                            {% if list.invoice_no == post.invoice_head.invoice_no %}
+                            <li class="list-group-item text-secondary">
+                                Invoice Number:
+                                <span class="float-right">{{list.invoice_no}}</span>
+                            </li>
+
+                            <li class="list-group-item text-secondary">
+                                Invoice date:
+                                <span class="float-right">{{list.invoice_date|date:" d-m-Y "}}</span>
+                            </li>
+
+
+                            <table style="width:100%" class="table table-bordered">
+                                <thread>
+                                    <tr>
+                                        <th class="text-secondary" style="text-align:center;">Supplier Code</th>
+                                        <th class="text-secondary" style="text-align:center;">Company Name</th>
+                                        <th class="text-secondary" style="text-align:center;">Item Code</th>
+                                        <th class="text-secondary" style="text-align:center;">Item Description</th>
+                                        <th class="text-secondary" style="text-align:center;">Tax</th>
+                                        <th class="text-secondary" style="text-align:center;">Amount</th>
+                                        <th class="text-secondary" style="text-align:center;">Quantity</th>
+                                    </tr>
+                                </thread>
+                                <tbody>
+                                <tr>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.supplier.supplier_code}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.supplier.company_name}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.item.item_code}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.item.item_description}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.tax}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.amount}}</td>
+                                    <td class=" text-secondary" style="text-align:center;">{{post.quantity}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            {% endif %}
+                           {% endfor %}
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

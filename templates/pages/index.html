@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- Listings -->
+<section id="listings" class="py-5">
+    <div class="container">
+        <h3 class="text-center mb-3" style="font-size: 70px;">SEARCH DETAILS</h3>
+        <div class="row">
+            <!-- Listing 1 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <hr>
+                <a href="{% url 'pr' %}" class="btn btn-primary btn-block">PR DETAILS</a>
+
+            </div>
+
+            <!-- Listing 2 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <hr>
+                <a href="{% url 'po' %}" class="btn btn-primary btn-block">PO DETAILS</a>
+
+            </div>
+
+            <!-- Listing 3 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <hr>
+                <a href="{% url 'invoice' %}" class="btn btn-primary btn-block">INVOICE</a>
+            </div>
+            <!-- Listing 4 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <hr>
+                <a href="{% url 'item' %}" class="btn btn-primary btn-block">ITEM</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

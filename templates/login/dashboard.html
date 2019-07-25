@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4"> GPI ERP Search Engine</h1>
+                <p class="lead">Welcome
+                    <h style="color:blue;">{{ user.username }}</h>
+                    !
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="breadcrumb-item active"> Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+</section>
+
+<section id="bc1" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <div class="content-section">
+                    <div class="media">
+                        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"
+                             style=" position:absolute;top:450px;left:860px;size:20px;width:300px; ">
+                        <div class="media-body">
+                            <h2 class="account-heading text-secondary" style="position:absolute;top:650px;left:980px; ">
+                                {{ user.username }}</h2>
+                            <p style="position:absolute;top:680px;left:960px; font-style:italic;">{{ user.email }}</p>
+                        </div>
+                    </div>
+                    <!-- FORM HERE -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 text-secondary ">Update Info</legend>
+                            {{u_form|crispy}}
+                            {{p_form|crispy}}
+                        </fieldset>
+                        <button type="submit" class="btn btn-secondary btn-block">Update</button>
+                    </form>
+                    <!-- FORM HERE -->
+                    <div class=" text-secondary">
+                        Reset password ? <a class="ml-2" href="{% url 'change_password' %}">Reset password</a>
+
+                    </div>
+                </div>
+            </ol>
+        </nav>
+    </div>
+
+</section>
+
+
+{% endblock %}

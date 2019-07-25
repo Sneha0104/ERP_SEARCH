@@ -1,0 +1,26 @@
+create a virtual environment:
+    python -m venv venv /code
+
+activate the virtual environment:
+        source venv/bin/activate    /code
+
+install all the requirements using:
+    pip install -r requirements.txt /code
+
+make a database and add it in settings
+
+run code:
+    python manage,py makmigrations  /code
+    python manage.py migrate    /code
+
+create a superuser for database
+    go inside the database
+    {for postgressql run :-
+        sudo -u postgres -i     /code
+        createdb database_name  /code
+        createsuper user for the database with password}:
+    django-admin createsuperuser username with password password
+
+
+create a superuser for admin access:
+    django-admin createsuperuser username with password password
